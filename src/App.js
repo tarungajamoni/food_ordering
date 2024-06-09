@@ -1,19 +1,19 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-import Header from './Header'
-import Body from './Body'
+import React from "react";
+import ReactDOM from "react-dom";
+import Header from "./components/Header";
+import Body from "./components/Body";
 
 const App = () => {
   return (
-    <div className='app'>
-        <Header/>
-        <Body/>
+    <div className="flex flex-col">
+      <Header />
+      <Body />
     </div>
-  )
-}
+  );
+};
 
-export default App
+export default App;
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
-root.render(<App/>)
+root.render(<App />);
