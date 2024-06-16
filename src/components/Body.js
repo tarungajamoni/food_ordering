@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
+import { Link } from "react-router-dom";
 
 const Body = () => {
   const [resList, setResList] = useState([]);
@@ -63,9 +64,10 @@ const Body = () => {
       </div>
       {/* Restaurant Cards */}
       <div className="flex flex-wrap my-2 mx-auto px-48 gap-1">
-        {filteredList.map((info, index) => (
+        {filteredList.map((info) => (
+          <Link key={info.id} to = {"restaurants/"+info.id}>
           <div
-            key={index}
+            key={info.id}
             className="flex flex-col rounded-lg justify-between hover:scale-95 cursor-pointer my-2 mx-auto h-80 w-64 p-2">
             <img
               className="h-3/5 w-full rounded-2xl"
@@ -83,6 +85,7 @@ const Body = () => {
             </div>
             <h4>{info.cuisines.join(", ")}</h4>
           </div>
+          </Link>
         ))}
       </div>
     </div>
