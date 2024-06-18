@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
+import RestaurantCard from "./RestaurantCard";
 
 const Body = () => {
   const [resList, setResList] = useState([]);
@@ -65,26 +66,8 @@ const Body = () => {
       {/* Restaurant Cards */}
       <div className="flex flex-wrap my-2 mx-auto px-48 gap-1">
         {filteredList.map((info) => (
-          <Link key={info.id} to = {"restaurants/"+info.id}>
-          <div
-            key={info.id}
-            className="flex flex-col rounded-lg justify-between hover:scale-95 cursor-pointer my-2 mx-auto h-80 w-64 p-2">
-            <img
-              className="h-3/5 w-full rounded-2xl"
-              alt="item"
-              src={
-                "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/" +
-                info.cloudinaryImageId
-              }
-            />
-            <h2 className="font-semibold">{info.name}</h2>
-            <div className="flex gap-2 font-semibold">
-              <h4>{info.avgRating}</h4>
-              <h4>|</h4>
-              <h4>{info.sla.deliveryTime} minutes</h4>
-            </div>
-            <h4>{info.cuisines.join(", ")}</h4>
-          </div>
+          <Link key={info?.id} to={"/restaurants/" + info?.id}>
+            <RestaurantCard resData={info} />
           </Link>
         ))}
       </div>
